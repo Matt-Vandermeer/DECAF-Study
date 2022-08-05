@@ -1,7 +1,12 @@
+##TO DO:
+##Remove use of "here" and spell out full path name and sub paths
+
+
+
 DECAF_Nback_loop <- function(path) {
-  require(here)
+ # require(here)
   require(tidyverse)
-  library(here)
+#  library(here)
   library(tidyverse)
   
   #define DECAF_Nback function
@@ -108,7 +113,7 @@ DECAF_Nback_loop <- function(path) {
   
   
   #create a list "file_list" of all ".csv" files in the directory "path"
-  file_list = list.files(path = here(data),
+  file_list = list.files(path = path,
                          pattern="*.csv")
   
   #if file_list is empty, print message that there are no .csv files in "path"
@@ -124,7 +129,7 @@ DECAF_Nback_loop <- function(path) {
     for (i in file_list) {
       print(i)
       #run DECAF_Nback function on .csv file "i" from "file_list"
-      n_back_output_partial<- DECAF_Nback(here(data, i))
+      n_back_output_partial<- DECAF_Nback(file.path(path, i, fsep = .Platform$file.sep))
       #add new rows extracted into "n_back_output_partial" from .csv file "i" to the bottom of "n_back_output_full"
       n_back_output_full <- rbind(n_back_output_partial, n_back_output_full)
     }
@@ -153,9 +158,9 @@ DECAF_Nback_loop <- function(path) {
 }
 
 DECAF_SpatialSpan_loop <- function(path) {
-  require(here)
+  #require(here)
   require(tidyverse)
-  library(here)
+  #library(here)
   library(tidyverse)
   #define DECAF_Nback function
   DECAF_SpatialSpan <- function(csvname) {
@@ -253,7 +258,7 @@ DECAF_SpatialSpan_loop <- function(path) {
   
   for (i in file_list) {
     print(i)
-    SpatialSpan_output_partial<- DECAF_SpatialSpan(here(data, i))
+    SpatialSpan_output_partial<- DECAF_SpatialSpan(file.path(path, i, fsep = .Platform$file.sep))
     SpatialSpan_output_full <- rbind(SpatialSpan_output_partial, SpatialSpan_output_full)
   }
   
@@ -295,7 +300,7 @@ DECAF_SpatialSpan_loop <- function(path) {
 
 DECAF_EMA_SR <- function(path) {
   #create a list "file_list" of all ".csv" files in the directory "path"
-  file_list = list.files(path = here(data),
+  file_list = list.files(path = path,
                          pattern="*.csv")
   
   #if file_list is empty, print message that there are no .csv files in "path"
@@ -311,7 +316,7 @@ DECAF_EMA_SR <- function(path) {
       print(i)
       
       #extract self-reported data for each row (i.e., timepoint) of .csv file "i" and save to dataframe "EMA_SR_output_partial"
-      EMA_SR_output_partial <- read_csv(here(data,i))%>% 
+      EMA_SR_output_partial <- read_csv(file.path(path, i, fsep = .Platform$file.sep))%>% 
         select(subject_id, 
                global_date, 
                DAILY_ACTIVITIES_LOCATION:AFF_GLT, 
