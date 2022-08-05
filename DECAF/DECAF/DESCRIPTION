@@ -6,9 +6,9 @@ Author: Matthew R. J. Vandermeer, PhD, CPsych (supervised practice)
 Maintainer: Matthew R. J. Vandermeer <dr.matt.vandermeer@protonmail.com>
 Description: DECAF package contains 4 functions for use in extracting and 
     formatting DECAF study data into usable data frames.
-Imports:
-  here
-  tidyverse
+depends: 
+  tidyverse >= 1.3.2,
+  here >= 1.01
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
