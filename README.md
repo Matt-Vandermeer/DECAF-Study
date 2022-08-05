@@ -1,3 +1,0 @@
-# DECAF-Study
-
-THIS IS A TEST!
