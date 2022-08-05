@@ -1,0 +1,14 @@
+Package: DECAF
+Type: Package
+Title: Cleans and Reformats DECAF Study Data
+Version: 0.1.0
+Author: Matthew R. J. Vandermeer, PhD, CPsych (supervised practice)
+Maintainer: Matthew R. J. Vandermeer <dr.matt.vandermeer@protonmail.com>
+Description: DECAF package contains 4 functions for use in extracting and 
+    formatting DECAF study data into usable data frames.
+Imports:
+  here
+  tidyverse
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
